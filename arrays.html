@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="cajatabla" id="tabla">
+        <table>
+                <tr>
+                    <th>Foto</th>
+                    <th>Productos</th>
+                    <th>Coste</th>
+                    <th>Beneficios</th>
+                    <th>PVP</th>
+                </tr>
+        </table>
+    </div>
+    
+    <script>
+        let fotos = ["https://via.placeholder.com/100", "https://via.placeholder.com/100", "https://via.placeholder.com/100"];
+        let productos = ["Producto 1", "Producto 2", "Producto 3"];
+        let costes = [10.00, 20.00, 15.00];
+        let beneficios = [5.00, 8.00, 6.00];
+        let pvps = [15.00, 28.00, 21.00];
+
+        function generarTabla() {
+
+        
+            for (let i = 0; i < coste.length; i++) {
+                    let fila = tabla.insertRow(); 
+                    
+                    let foto = fila.insertCell(0);
+                    let productos = fila.insertCell(1);
+                    let coste = fila.insertCell(2);
+                    let beneficios = fila.insertCell(3);
+                    let pvp = fila.insertCell(4);
+
+                    
+                    foto.innerHTML = `<img src="${fotos[i]}" alt="Foto ${productos[i]}">`;
+                    productos.textContent = productos[i];
+                    coste.textContent = `€${costes[i].toFixed(2)}`;
+                    beneficios.textContent = `€${beneficios[i].toFixed(2)}`;
+                    pvp.textContent = `€${pvps[i].toFixed(2)}`;
+                }
+            }
+        generarTabla();
+    </script>
+
+</body>
+</html>

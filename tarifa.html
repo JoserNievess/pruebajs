@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabla precios</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<div id="tarifa"></div>
+<script src="js/datos.js"></script>
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let tarifa = document.getElementById('tarifa');
+            let tabla = '';
+            tabla += '<table>';
+            // Bucle para crear filas de la tabla
+            for(let i = 0; i < productos.length; i++){
+                let pvp = pcostos[i] + beneficios[i];
+                let foto = '<img src="img/' + fotos[i] + '" width="100" alt="' + productos[i] + '">';
+                tabla += '<tr>';
+                    tabla += '<td>' + foto + '</td>';
+                    tabla += '<td id="producto' + i + '">' + productos[i] + '</td>';
+                    tabla += '<td class="moneda">' + pcostos[i] + '</td>';
+                    tabla += '<td class="moneda">' + beneficios[i] + '</td>';
+                    tabla += '<td class="moneda" id="pvp' + i + '">' + pvp + '</td>';
+                tabla += '</tr>';
+            }
+            tabla += '</table>';
+            tarifa.innerHTML = tabla;
+ 
+            // Añadimos los eventos después de que la tabla esté en el DOM
+            for(let i = 0; i < productos.length; i++){
+                let celdaPVP = document.getElementById('pvp' + i);
+                let pvpOriginal = pcostos[i] + beneficios[i];
+ 
+                celdaPVP.addEventListener('mouseover', function() {
+                    let precioIva = pvpOriginal * 1.21;
+                    celdaPVP.textContent= precioIva;
+                });
+ 
+                celdaPVP.addEventListener('mouseout', function() {
+                celdaPVP.textContent = pvpOriginal;
+                });
+ 
+ 
+                let celdaProducto = document.getElementById('producto' + i);
+                celdaProducto.addEventListener('mouseover', function() {
+                    celdaProducto.style.color = 'red';
+                });
+ 
+                // Restaurar
+                celdaProducto.addEventListener('mouseout', function() {
+                    celdaProducto.style.color = '';
+                });
+ 
+                }
+           
+        });
+</script>
+</body>
+</html>
