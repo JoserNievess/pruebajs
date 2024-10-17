@@ -14,7 +14,7 @@
             let tarifa = document.getElementById('tarifa');
             let tabla = '';
             tabla += '<table>';
-            // Bucle para crear filas de la tabla
+           
             for(let i = 0; i < productos.length; i++){
                 let pvp = pcostos[i] + beneficios[i];
                 let foto = '<img src="img/' + fotos[i] + '" width="100" alt="' + productos[i] + '">';
@@ -29,7 +29,7 @@
             tabla += '</table>';
             tarifa.innerHTML = tabla;
  
-            // Añadimos los eventos después de que la tabla esté en el DOM
+          
             for(let i = 0; i < productos.length; i++){
                 let celdaPVP = document.getElementById('pvp' + i);
                 let pvpOriginal = pcostos[i] + beneficios[i];
@@ -49,7 +49,7 @@
                     celdaProducto.style.color = 'red';
                 });
  
-                // Restaurar
+              
                 celdaProducto.addEventListener('mouseout', function() {
                     celdaProducto.style.color = '';
                 });
